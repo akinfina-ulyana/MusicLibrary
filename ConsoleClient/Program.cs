@@ -21,7 +21,7 @@ barselona.AddSong(song6);
 barselona.AddSong(song7);
 barselona.AddSong(song8);
 
-// var player = MusicPlayer.Instance;  Мы еще "маленькие", что такое Singleton не знаем, знаем, но логика задания и так напутана, будем ждать пояснений на лекции касательно реализации синглтона
+// var player = MusicPlayer.Instance;  Мы еще "маленькие", что такое Singleton не знаем, (знаем), но логика задания и так напутана, будем ждать пояснений на лекции касательно реализации синглтона
 var player = new MusicPlayer();
 player.AddAlbum(barselona);
 player.SelectAlbum("Barcelona");
