@@ -4,7 +4,6 @@ public enum Genre
 {
     None,
 
-    // TODO: Add more genres as needed
     Classical,
     Electronic,
     Blues,
@@ -12,4 +11,13 @@ public enum Genre
     Country,
     Metal,
     Soul,
+    Pop,
+    Jazz,
+    HipHop,
+    Folk,
+    RnB,
+    Reggae,
+    Latin,
+    World,
+    AlternativeRock,
 }
