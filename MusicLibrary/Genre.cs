@@ -1,23 +1,24 @@
-namespace MusicLibrary;
-
-public enum Genre
+namespace MusicLibrary
 {
-    None,
+    public enum Genre
+    {
+        None,
 
-    Classical,
-    Electronic,
-    Blues,
-    Rock,
-    Country,
-    Metal,
-    Soul,
-    Pop,
-    Jazz,
-    HipHop,
-    Folk,
-    RnB,
-    Reggae,
-    Latin,
-    World,
-    AlternativeRock,
+        Classical,
+        Electronic,
+        Blues,
+        Rock,
+        Country,
+        Metal,
+        Soul,
+        Pop,
+        Jazz,
+        HipHop,
+        Folk,
+        RnB,
+        Reggae,
+        Latin,
+        World,
+        AlternativeRock,
+    }
 }

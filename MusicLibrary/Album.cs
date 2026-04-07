@@ -7,6 +7,9 @@ namespace MusicLibrary
         private DateTime _releaseDate;
         private List<Song> _songs;
 
+        //добавила для доступа и создания метода CreateFromAlbum
+        public IReadOnlyList<Song> Song => _songs;
+
         public Album(string title, Artist artist, DateTime releaseDate)
         {
             Title = title;
@@ -20,11 +23,7 @@ namespace MusicLibrary
             get => _artist;
             set
             {
-                if (value == null)
-                {
-                    throw new ArgumentNullException(nameof(value));
-                }
-
+                ArgumentNullException.ThrowIfNull(value);
                 _artist = value;
             }
         }
@@ -58,6 +57,21 @@ namespace MusicLibrary
             }
         }
 
+        //---------------------------------------
+        public TimeSpan TotalDuration =>
+        TimeSpan.FromMinutes(_songs.Aggregate(0.0, (sum, s) => sum + s.DurationMinutes));
+
+        public double AverageRating =>
+            _songs.Count == 0 ? 0 : _songs.Average(s => s.Rating);
+
+        public Song? MostPopularSong =>
+            _songs.Count == 0 ? null : _songs.OrderByDescending(s => s.Rating).First();
+
+
+        public int SongCount => _songs.Count;
+
+        //----------------------------------------
+
         public List<Song> GetSongs()
         {
             return _songs;
@@ -80,6 +94,23 @@ namespace MusicLibrary
         public bool RemoveSong(Song song)
         {
             return _songs.Remove(song);
+        }
+
+        public List<Song> GetSongsByRating(int minRating)
+        {
+            return _songs
+                .Where(s => s.Rating >= minRating)
+                .ToList();
+        }
+
+        public bool ContainsSong(Song song)
+        {
+            if (song == null)
+            {
+                throw new ArgumentNullException(nameof(song));
+            }
+
+            return _songs.Contains(song);
         }
 
         public void RemoveSongAt(int index)

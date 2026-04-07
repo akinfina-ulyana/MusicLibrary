@@ -4,18 +4,19 @@ namespace MusicLibrary
     // поэтому я добавила пару полей и так же изменила некоторые другие классы
     public class Song
     {
-        // TODO: Define a private fields
         private string _title;
         private Artist _artist;
         private Genre _genre;
         private double _durationMinutes;
+        private int _rating;
 
-        public Song(string title, Artist artist, Genre genre, double durationMinutes)
+        public Song(string title, Artist artist, Genre genre, double durationMinutes, int rating)
         {
             this.Title = title;
             this.Artist = artist;
             this.Genre = genre;
             this.DurationMinutes = durationMinutes;
+            this.Rating = rating;
         }
 
         public Artist Artist { get; set; }
@@ -36,8 +37,30 @@ namespace MusicLibrary
 
         public Genre Genre
         {
-            get => this._genre;
-            set => this._genre = value;
+            get => _genre;
+            set
+            {
+                if (value == null)
+                {
+                    throw new ArgumentNullException(nameof(value));
+                }
+
+                _genre = value;
+            }
+        }
+
+        public int Rating
+        {
+            get => _rating;
+            set
+            {
+                if (value < 0 || value > 5)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(value), "Rating must be in range 0..5.");
+                }
+
+                _rating = value;
+            }
         }
 
         public double DurationMinutes
@@ -53,9 +76,5 @@ namespace MusicLibrary
                 this._durationMinutes = value;
             }
         }
-        // TODO: Implement a property to get and set the song's title with validation
-        // TODO: Implement a property to get and set the song's duration with validation
-        // TODO: Implement a property to get and set the song's performer with validation
-        // TODO: Add the ToString method to return the song's title, duration, and performer as a string song representation
     }
 }

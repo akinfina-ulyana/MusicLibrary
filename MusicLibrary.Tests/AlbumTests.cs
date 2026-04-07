@@ -13,7 +13,7 @@ namespace MusicLibrary.Tests
 
         private Song CreateSong()
         {
-            return new Song("Test Song", CreateArtist(), Genre.Rock, 3.5);
+            return new Song("Test Song", CreateArtist(), Genre.Rock, 3.5, 4);
         }
 
         [Fact]
